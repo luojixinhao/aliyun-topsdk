@@ -2,6 +2,7 @@
 
 	include './SecretContext.php';
 	include './MagicCrypt.php';
+	include './SecretContext.php';
 
 	class SecurityUtil
 	{
