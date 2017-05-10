@@ -14,8 +14,6 @@
         }
     ],
     "autoload": {
-        "psr-4": {
-		"jason\\aliyunTopSdk\\": ["./"]
-	}
+        "files": ["TopSdk.php"]
     }
 }
