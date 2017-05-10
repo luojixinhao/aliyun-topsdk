@@ -1,0 +1,19 @@
+{
+    "name": "luojixinhao/aliyun-topsdk"
+    ,"type": "library"
+    ,"description": "aliyun-topsdk"
+    ,"version": "0.0.1"
+    ,"keywords": []
+    ,"homepage": "http://www.9window.com/"
+    ,"license": "MIT"
+    ,"authors": [
+        {
+            "name": "Jason Luo"
+	    ,"email": "lx_2010@qq.com"
+            ,"role": "Developer"
+        }
+    ],
+    "autoload": {
+        "classmap": ["TopSdk.php"]
+    }
+}
