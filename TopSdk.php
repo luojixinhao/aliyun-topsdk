@@ -1,4 +1,5 @@
 <?php
+namespace jason\aliyunTopSdk;
 /**
  * TOP SDK 入口文件
  * 请不要修改这个文件，除非你知道怎样修改以及怎样恢复
