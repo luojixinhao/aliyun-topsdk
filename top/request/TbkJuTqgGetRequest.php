@@ -3,7 +3,7 @@
  * TOP API: taobao.tbk.ju.tqg.get request
  * 
  * @author auto create
- * @since 1.0, 2017.04.17
+ * @since 1.0, 2017.06.17
  */
 class TbkJuTqgGetRequest
 {

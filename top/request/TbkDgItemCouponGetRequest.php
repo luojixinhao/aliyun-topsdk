@@ -1,29 +1,24 @@
 <?php
 /**
- * TOP API: taobao.tbk.uatm.favorites.item.get request
+ * TOP API: taobao.tbk.dg.item.coupon.get request
  * 
  * @author auto create
- * @since 1.0, 2017.06.17
+ * @since 1.0, 2017.06.21
  */
-class TbkUatmFavoritesItemGetRequest
+class TbkDgItemCouponGetRequest
 {
 	/** 
-	 * 推广位id，需要在淘宝联盟后台创建；且属于appkey备案的媒体id（siteid），如何获取adzoneid，请参考，http://club.alimama.com/read-htm-tid-6333967.html?spm=0.0.0.0.msZnx5
+	 * mm_xxx_xxx_xxx的第三位
 	 **/
 	private $adzoneId;
 	
 	/** 
-	 * 选品库的id
+	 * 后台类目ID，用,分割，最大10个，该ID可以通过taobao.itemcats.get接口获取到
 	 **/
-	private $favoritesId;
+	private $cat;
 	
 	/** 
-	 * 需要输出则字段列表，逗号分隔
-	 **/
-	private $fields;
-	
-	/** 
-	 * 第几页，默认：1，从1开始计数
+	 * 第几页，默认：1（当后台类目和查询词均不指定的时候，最多出10000个结果，即page_no*page_size不能超过200；当指定类目或关键词的时候，则最多出100个结果）
 	 **/
 	private $pageNo;
 	
@@ -33,14 +28,14 @@ class TbkUatmFavoritesItemGetRequest
 	private $pageSize;
 	
 	/** 
-	 * 链接形式：1：PC，2：无线，默认：１
+	 * 1：PC，2：无线，默认：1
 	 **/
 	private $platform;
 	
 	/** 
-	 * 自定义输入串，英文和数字组成，长度不能大于12个字符，区分不同的推广渠道
+	 * 查询词
 	 **/
-	private $unid;
+	private $q;
 	
 	private $apiParas = array();
 	
@@ -55,26 +50,15 @@ class TbkUatmFavoritesItemGetRequest
 		return $this->adzoneId;
 	}
 
-	public function setFavoritesId($favoritesId)
+	public function setCat($cat)
 	{
-		$this->favoritesId = $favoritesId;
-		$this->apiParas["favorites_id"] = $favoritesId;
+		$this->cat = $cat;
+		$this->apiParas["cat"] = $cat;
 	}
 
-	public function getFavoritesId()
+	public function getCat()
 	{
-		return $this->favoritesId;
-	}
-
-	public function setFields($fields)
-	{
-		$this->fields = $fields;
-		$this->apiParas["fields"] = $fields;
-	}
-
-	public function getFields()
-	{
-		return $this->fields;
+		return $this->cat;
 	}
 
 	public function setPageNo($pageNo)
@@ -110,20 +94,20 @@ class TbkUatmFavoritesItemGetRequest
 		return $this->platform;
 	}
 
-	public function setUnid($unid)
+	public function setQ($q)
 	{
-		$this->unid = $unid;
-		$this->apiParas["unid"] = $unid;
+		$this->q = $q;
+		$this->apiParas["q"] = $q;
 	}
 
-	public function getUnid()
+	public function getQ()
 	{
-		return $this->unid;
+		return $this->q;
 	}
 
 	public function getApiMethodName()
 	{
-		return "taobao.tbk.uatm.favorites.item.get";
+		return "taobao.tbk.dg.item.coupon.get";
 	}
 	
 	public function getApiParas()
@@ -135,8 +119,7 @@ class TbkUatmFavoritesItemGetRequest
 	{
 		
 		RequestCheckUtil::checkNotNull($this->adzoneId,"adzoneId");
-		RequestCheckUtil::checkNotNull($this->favoritesId,"favoritesId");
-		RequestCheckUtil::checkNotNull($this->fields,"fields");
+		RequestCheckUtil::checkMaxLength($this->cat,10,"cat");
 	}
 	
 	public function putOtherTextParam($key, $value) {

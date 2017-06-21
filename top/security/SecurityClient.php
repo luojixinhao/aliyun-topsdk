@@ -297,6 +297,12 @@
 			return $session.'_'.$secretVersion ;
 		}
 
+
+		function generateCustomerSession($userId)
+		{
+			return '_'.$userId ;
+		}
+
 		/**
 		* 判断是否是已加密的数据
 		*/
@@ -478,10 +484,10 @@
 			}
 
 			$response = $this->topClient->execute($request,$secretContext->session);
-			if(isset($response->code) && $response->code != 0){
-				return false;
+			if($response->code == 0){
+				return true;
 			}
-			return true;
+			return false;
 		}
 
 		/**
@@ -500,13 +506,15 @@
 				$request->setSecretVersion($secretVersion);
 			}
 			
+			$topSession = $session;
 			if($session != null && $session[0] == '_')
 			{
-				$request->setCustomerUserId(substr(session,1));
+				$request->setCustomerUserId(substr($session,1));
+				$topSession = null;
 			}
 
-			$response = $this->topClient->execute($request,$session);
-			if(isset($response->code) && $response->code != 0){
+			$response = $this->topClient->execute($request,$topSession);
+			if($response->code != 0){
 				throw new Exception($response->msg);
 			}
 

@@ -3,7 +3,7 @@
  * TOP API: taobao.tbk.spread.get request
  * 
  * @author auto create
- * @since 1.0, 2017.04.01
+ * @since 1.0, 2017.06.17
  */
 class TbkSpreadGetRequest
 {

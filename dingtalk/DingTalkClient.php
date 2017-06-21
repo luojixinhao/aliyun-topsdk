@@ -3,7 +3,7 @@ class DingTalkClient
 {
 	/**@Author chaohui.zch copy from TopClient and modify 2016-12-14 **/
 
-	public $gatewayUrl = "http://gw.api.taobao.com/router/rest";
+	public $gatewayUrl = "https://eco.taobao.com/router/rest"; //http://gw.api.taobao.com/router/rest
 
 	public $format = "xml";
 
